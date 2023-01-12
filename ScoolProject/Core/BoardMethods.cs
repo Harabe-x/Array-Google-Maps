@@ -26,9 +26,8 @@ namespace SchoolProject.Core
         /// Fiils board with numbers 0-9 , this method also adds borders to the board
         /// </summary>
         /// <param name="board"></param>
-        /// <param name="size"></param>
         /// <returns></returns>
-        internal static Char[,] FillBoard(Char[,] board, int size)
+        internal static Char[,] FillBoard(Char[,] board)
         {          
             // & = Start Char
             // $ = End Char
@@ -39,18 +38,18 @@ namespace SchoolProject.Core
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (i == 0 || i == size - 1 || j == 0 || j == size - 1) { board[i, j] = '+'; }
+                    if (i == 0 || i == board.GetLength(0) - 1 || j == 0 || j == board.GetLength(1) - 1) { board[i, j] = '+'; }
                     else { board[i, j] = (Char)( 0x30 | _random.Next(0, 10)); }
 
                 }
             }
             while (true)
             {
-                int a = _random.Next(size - 1);
-                int b = _random.Next(size - 1);
-                int x = _random.Next(size - 1);
-                int y = _random.Next(size - 1);
-                if (!BorderCheck(board[x, y]) && !BorderCheck(board[a, b]) && a != x   )
+                int a = _random.Next(board.GetLength(0) - 1);
+                int b = _random.Next(board.GetLength(0) - 1);
+                int x = _random.Next(board.GetLength(0) - 1);
+                int y = _random.Next(board.GetLength(0) - 1);
+                if (!Resolve.BorderCheck(board[x, y]) && !Resolve.BorderCheck(board[a, b]) && a != x   )
                 {
                     board[a, b] = '&';
                     board[x, y] = '$';
@@ -72,24 +71,14 @@ namespace SchoolProject.Core
                 {
                     if (board[i, j] == '&') Console.ForegroundColor = ConsoleColor.Red;
                     if (board[i, j] == '$') Console.ForegroundColor = ConsoleColor.Green;
+                    if (board[i, j] == (char)9632) Console.ForegroundColor = ConsoleColor.Cyan;
+
                     Console.Write($"{board[i,j]} ");
                     Console.ResetColor();
                 }
                 Console.WriteLine();
             }
         }
-        /// <summary>
-        /// Check if the start position is border
-        /// </summary>
-        /// <param name="DrawnIndex"></param>
-        /// <returns></returns>
-        internal static bool BorderCheck(Char DrawnIndex)
-        {
-            if (DrawnIndex =='+')
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SchoolProject.Core;
+using SchoolProject.Cosmetics;
 using System;
 using System.Collections.Generic;
 
@@ -8,19 +9,26 @@ class Program
 {
     internal static void Main(string[] args)
     {
+        ConsoleKey key;
         int size;
-        Console.WriteLine("Enter board size :");
-         int.TryParse(Console.ReadLine(), out size);
-         BoardMethods.Show(BoardMethods.FillBoard(BoardMethods.Generate(size),size));
+        Animations.WriteAnimation("Enter size :", TimeSpan.FromMilliseconds(0));
+        int.TryParse(Console.ReadLine(), out size);
+        Resolve res = new Resolve(BoardMethods.FillBoard(BoardMethods.Generate(size)));
         Console.Clear();
-        for (int i = 0; i < 10000; i++)
+        while (true)
         {
-            BoardMethods.Show(BoardMethods.FillBoard(BoardMethods.Generate(size), size));
-             Console.ReadLine();
-            //Thread.Sleep(150);
-            Console.SetCursorPosition(0, 0);
-          
-           
-        }        
+            key = Console.ReadKey().Key;
+            switch (key)
+            {
+                case ConsoleKey.A : res.MoveLeft(); Thread.Sleep(1000); Console.Clear(); break;
+                case ConsoleKey.D : res.MoveRight();
+                    Thread.Sleep(1000); Console.Clear(); break;
+                case ConsoleKey.W : res.MoveUp();
+                    Thread.Sleep(1000); Console.Clear(); break;
+                case ConsoleKey.S : res.MoveDown();
+                    Thread.Sleep(1000); Console.Clear(); break;
+                case ConsoleKey.Backspace : return;
+            }
+        }
     }
 }
