@@ -15,6 +15,9 @@ class Program
         int.TryParse(Console.ReadLine(), out size);
         Resolve res = new Resolve(BoardMethods.FillBoard(BoardMethods.Generate(size)));
         Console.Clear();
+        res.Show();
+        Console.ReadKey();
+        Console.Clear();
         while (true)
         {
             key = Console.ReadKey().Key;
