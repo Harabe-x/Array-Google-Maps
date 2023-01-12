@@ -1,0 +1,15 @@
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\bin\Debug\net6.0\SchoolProject.exe
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\bin\Debug\net6.0\SchoolProject.deps.json
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\bin\Debug\net6.0\SchoolProject.runtimeconfig.json
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\bin\Debug\net6.0\SchoolProject.dll
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\bin\Debug\net6.0\SchoolProject.pdb
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.csproj.AssemblyReference.cache
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.AssemblyInfoInputs.cache
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.AssemblyInfo.cs
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.csproj.CoreCompileInputs.cache
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.dll
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\refint\SchoolProject.dll
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.pdb
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\SchoolProject.genruntimeconfig.cache
+C:\Users\xgra5\RiderProjects\ScoolProject\ScoolProject\obj\Debug\net6.0\ref\SchoolProject.dll
