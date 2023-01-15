@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
-
-namespace SchoolProject.Core
+﻿namespace SchoolProject.Core
 {
     internal static class BoardMethods
     {
@@ -28,7 +19,7 @@ namespace SchoolProject.Core
         /// <param name="board"></param>
         /// <returns></returns>
         internal static Char[,] FillBoard(Char[,] board)
-        {          
+        {
             // & = Start Char
             // $ = End Char
 
@@ -39,7 +30,7 @@ namespace SchoolProject.Core
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
                     if (i == 0 || i == board.GetLength(0) - 1 || j == 0 || j == board.GetLength(1) - 1) { board[i, j] = '+'; }
-                    else { board[i, j] = (Char)( 0x30 | _random.Next(0, 10)); }
+                    else { board[i, j] = (Char)(0x30 | _random.Next(0, 10)); }
 
                 }
             }
@@ -49,14 +40,14 @@ namespace SchoolProject.Core
                 int b = _random.Next(board.GetLength(0) - 1);
                 int x = _random.Next(board.GetLength(0) - 1);
                 int y = _random.Next(board.GetLength(0) - 1);
-                if (!Resolve.BorderCheck(board[x, y]) && !Resolve.BorderCheck(board[a, b]) && a != x   )
+                if (!Resolve.BorderCheck(board[x, y]) && !Resolve.BorderCheck(board[a, b]) && a != x)
                 {
                     board[a, b] = '&';
                     board[x, y] = '$';
                     break;
                 }
             }
-          
+
             return board;
         }
         /// <summary>
@@ -73,12 +64,12 @@ namespace SchoolProject.Core
                     if (board[i, j] == '$') Console.ForegroundColor = ConsoleColor.Green;
                     if (board[i, j] == (char)9632) Console.ForegroundColor = ConsoleColor.Cyan;
 
-                    Console.Write($"{board[i,j]} ");
+                    Console.Write($"{board[i, j]} ");
                     Console.ResetColor();
                 }
                 Console.WriteLine();
             }
         }
-        
+
     }
 }

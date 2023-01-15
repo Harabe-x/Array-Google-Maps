@@ -10,20 +10,20 @@
   "packageFolders": {
     "C:\\Users\\xgra5\\.nuget\\packages\\": {},
     "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj",
-      "projectName": "SchoolProject",
-      "projectPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj",
+      "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
+      "projectName": "Array-Google-Maps",
+      "projectPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
       "packagesPath": "C:\\Users\\xgra5\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
         "C:\\Users\\xgra5\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj": {}
+    "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj": {}
   },
   "projects": {
-    "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj": {
+    "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj",
-        "projectName": "SchoolProject",
-        "projectPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\SchoolProject.csproj",
+        "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
+        "projectName": "Array-Google-Maps",
+        "projectPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
         "packagesPath": "C:\\Users\\xgra5\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\obj\\",
         "projectStyle": "PackageReference",
