@@ -12,9 +12,13 @@ namespace SchoolProject.Core
         #region Fields
 
         /// <summary>
-        /// 
+        /// Moves count
         /// </summary>
-        public int cost { get; set; }
+        public int Moves { get; set; }
+        /// <summary>
+        ///  Total cost
+        /// </summary>
+        public int Cost { get; set; }
 
         /// <summary>
         /// Array of chars which contains board to solve
@@ -24,7 +28,7 @@ namespace SchoolProject.Core
         /// <summary>
         ///  Array thats stores visited places 
         /// </summary>
-        private Dictionary<int, int> _visited;
+        private List<KeyValuePair<int,int>> _visited;
 
         #endregion
         #region ctor
@@ -36,7 +40,7 @@ namespace SchoolProject.Core
         internal Resolve(char[,] board)
         {
             _board = board;
-            _visited = new Dictionary<int, int>();
+            _visited = new List<KeyValuePair<int, int>>();
         }
 
         #endregion
@@ -74,7 +78,7 @@ namespace SchoolProject.Core
 
         private void AddVisitedPlace(int key , int value)
         {
-            _visited.Add(key ,value);
+            _visited.Add(new KeyValuePair<int, int>(key,value));
         }
    
 
@@ -151,15 +155,23 @@ namespace SchoolProject.Core
         {
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             AddVisitedPlace(currentpos.Key - 1, currentpos.Value);
+            if (_board[currentpos.Key - 1, currentpos.Value]== '$')
+            {
+                Console.Clear();
+                Console.WriteLine(" D o N e , C o n g r a t s ");
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+                return;
+            } 
             if (!BorderCheck(_board[currentpos.Key - 1, currentpos.Value]))
             {
                 if (!VisitedCheck(currentpos.Key - 1, currentpos.Value ))
                 {
-                    cost += _board[currentpos.Key - 1, currentpos.Value ] - '0';
+                    Cost += _board[currentpos.Key - 1, currentpos.Value ] - '0';
                 }
                 _board[currentpos.Key, currentpos.Value] = (char)9632;
                 _board[currentpos.Key - 1, currentpos.Value] = '&';
-                Console.WriteLine($"Total cost: {cost}");
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+                Moves++;
                 AddVisitedPlace(currentpos.Key - 1, currentpos.Value );
 
                 BoardMethods.Show(_board);
@@ -174,16 +186,24 @@ namespace SchoolProject.Core
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             AddVisitedPlace(currentpos.Key + 1, currentpos.Value);
 
+            if (_board[currentpos.Key + 1, currentpos.Value]== '$')
+            {
+                Console.Clear();
+                Console.WriteLine(" D o N e , C o n g r a t s ");
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+                return;
+            }
             if (!BorderCheck(_board[currentpos.Key + 1, currentpos.Value]))
             {
                 if (!VisitedCheck(currentpos.Key + 1, currentpos.Value ))
                 {
-                    cost += _board[currentpos.Key + 1, currentpos.Value ] - '0';
+                    Cost += _board[currentpos.Key + 1, currentpos.Value ] - '0';
                 }
                 _board[currentpos.Key + 1, currentpos.Value] = '&';
                 _board[currentpos.Key, currentpos.Value] = (char)9632;
                 AddVisitedPlace(currentpos.Key + 1, currentpos.Value );
-                Console.WriteLine($"Total cost: {cost}");
+                Moves++;
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
                 BoardMethods.Show(_board);
             }
         }
@@ -195,17 +215,30 @@ namespace SchoolProject.Core
         {
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             AddVisitedPlace(currentpos.Key , currentpos.Value -1);
-
+            if (_board[currentpos.Key, currentpos.Value - 1]== '$')
+            {
+                Console.Clear();
+                Console.WriteLine(" D o N e , C o n g r a t s ");
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+                return;
+            }
             if (!BorderCheck(_board[currentpos.Key, currentpos.Value - 1]))
             {
+                
                 if (!VisitedCheck(currentpos.Key, currentpos.Value - 1))
                 {
-                    cost += _board[currentpos.Key, currentpos.Value - 1] - '0';
+                    Cost += _board[currentpos.Key, currentpos.Value - 1] - '0';
                 }
+                
                 _board[currentpos.Key, currentpos.Value] = (char)9632;
                 _board[currentpos.Key, currentpos.Value - 1] = '&';
+               
                 AddVisitedPlace(currentpos.Key , currentpos.Value + 1 );
-                Console.WriteLine($"Total cost: {cost}");
+                
+                Moves++;
+             
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+               
                 BoardMethods.Show(_board);
             }
         }
@@ -215,19 +248,26 @@ namespace SchoolProject.Core
         /// </summary>
         internal void MoveRight()
         {
-            
             KeyValuePair<int, int> currentpos = GetStartCharPos();
-            AddVisitedPlace(currentpos.Key - 1, currentpos.Value);
+            if (_board[currentpos.Key, currentpos.Value + 1]== '$')
+            {
+                Console.Clear();
+                Console.WriteLine(" D o N e , C o n g r a t s ");
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
+                return;
+            }
+            AddVisitedPlace(currentpos.Key + 1, currentpos.Value);
             if (!BorderCheck(_board[currentpos.Key, currentpos.Value + 1]))
             {
                 if (!VisitedCheck(currentpos.Key, currentpos.Value + 1))
                 {
-                    cost += _board[currentpos.Key, currentpos.Value + 1] - '0';
+                    Cost += _board[currentpos.Key, currentpos.Value + 1] - '0';
                 }
                 _board[currentpos.Key, currentpos.Value] = (char)9632;
                 _board[currentpos.Key, currentpos.Value + 1] = '&';
                 AddVisitedPlace(currentpos.Key , currentpos.Value + 1 );
-                Console.WriteLine($"Total cost: {cost}");
+                Moves++;
+                Console.WriteLine($"Total cost: {Cost}\nMoves count:{Moves}");
                 BoardMethods.Show(_board);
             }
         }
