@@ -11,7 +11,7 @@ class Program
         //int size;
         //Animations.WriteAnimation("Enter size :", TimeSpan.FromMilliseconds(0));
         //int.TryParse(Console.ReadLine(), out size);
-        Resolve res = new Resolve(BoardMethods.FillBoard(BoardMethods.Generate(24)));
+        Resolve res = new Resolve(BoardMethods.FillBoard(BoardMethods.Generate(10)));
         Console.Clear();
         Console.Clear();
         // while (condition)

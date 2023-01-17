@@ -2,32 +2,33 @@
 {
     internal class Resolve
     {
-
         #region Fields
 
 
-        private bool Solved { get; set; }
+        internal int TotalCombinations { get; set; }
+
         /// <summary>
-        /// Moves count
+        /// Recursion DepthLimit
         /// </summary>
-        public int Moves { get; set; }
+        internal int DepthLimit = 12;
+
         /// <summary>
         ///  Total cost
         /// </summary>
-        public int Cost { get; set; }
+        internal int Cost { get; set; }
 
         /// <summary>
         /// Array of chars which contains board to solve
         /// </summary>
-        private Char[,] _board;
+        internal readonly Char[,] _board;
 
         /// <summary>
         /// List that stores visited places 
         /// </summary>
-        private readonly List<KeyValuePair<int, int>> _visited;
+        private readonly List<PathCost> _visited;
 
-        private List<Char[,]> _moveshistory;
         #endregion
+
         #region ctor
 
         /// <summary>
@@ -37,24 +38,12 @@
         internal Resolve(char[,] board)
         {
             _board = board;
-            _visited = new List<KeyValuePair<int, int>>();
-            _moveshistory = new List<char[,]>();
+            _visited = new List<PathCost>();
         }
 
         #endregion
+
         #region Methods
-
-        internal void ShowMoveHistory()
-        {
-
-            Console.Clear();
-            foreach (char[,] item in _moveshistory)
-            {
-                BoardMethods.Show(item);
-                Console.ReadKey();
-                Console.Clear();
-            }
-        }
 
         /// <summary>
         /// Check if the specified position is board border 
@@ -66,89 +55,40 @@
             if (drawnindex == '+')
             {
                 return true;
-                { }
             }
 
             return false;
         }
-        /// <summary>
-        /// Chceks  if specified pos was visited
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        /// <returns></returns>
-        private bool VisitedCheck(int key, int value)
-        {
-            foreach (KeyValuePair<int, int> item in _visited)
-            {
-                if (item.Key == key && item.Value == value)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-        /// <summary>
-        /// Adds visited place to list 
-        /// </summary>
-        /// <param name="key"></param>
-        /// <param name="value"></param>
-        private void AddVisitedPlace(int key, int value)
-        {
-            _visited.Add(new KeyValuePair<int, int>(key, value));
-        }
-
 
         /// <summary>
         /// Resolves the board  
         /// </summary>
         internal void Start()
         {
+            KeyValuePair<int, int> start = GetStartCharPos();
+            KeyValuePair<int, int> end = GetEndCharPos();
+            FindPaths(start.Key, start.Value, end.Key, end.Value, "", 0, 0);
+            var minCostPath = _visited.OrderBy(pc => pc.Cost).FirstOrDefault();
 
-            KeyValuePair<int, int> endCharPos = GetEndCharPos();
-            Solved = false;
-            //  Console.WriteLine("SOLVING ...");
-            Console.Clear();
-            while (!Solved)
-            {
+            // foreach (var vis in _visited)
+            // { //Console.WriteLine(vis);
+            //     Console.WriteLine($"RUCHY:{vis.Key} ŁĄCZNY KOSZT:{vis.Value}");
+            //     if (min > vis.Value )
+            //     {
+            //         min = vis.Value;
+            //         asociatedstring = vis.Key;
+            //     }
+            // }
 
-                Console.SetCursorPosition(0, 0);
-                Thread.Sleep(500);
-                KeyValuePair<int, int> currentpos = GetStartCharPos();
-                if (VisitedCheck(endCharPos.Key, endCharPos.Value))
-                {
-                    Solved = true;
-                }
 
-                if (currentpos.Key != endCharPos.Key && currentpos.Key > endCharPos.Key)
-                {
-                    MoveUp();
-                    continue;
-                }
-                if (currentpos.Key != endCharPos.Key && currentpos.Key < endCharPos.Key)
-                {
-                    MoveDown();
-                    continue;
-                }
-                if (currentpos.Value != endCharPos.Value && currentpos.Value > endCharPos.Value)
-                {
-                    MoveLeft();
 
-                    continue;
-                }
-                if (currentpos.Value != endCharPos.Value && currentpos.Value < endCharPos.Value)
-                {
-                    MoveRight();
-                }
+            Console.WriteLine($"MIN:{minCostPath.Cost} \nMOVES:{minCostPath.Path}");
+            BoardMethods.Show(_board);
 
-            }
-            Console.Clear();
-            Console.SetCursorPosition(0, 0);
-            Console.WriteLine($"SOLVED !!!\nTotal Cost : {Cost}\nTotal Moves : {Moves}");
-            Console.ReadKey();
         }
+
         #endregion
+
         #region GetPosMethods
 
         /// <summary>
@@ -157,20 +97,18 @@
         /// </summary>
         private KeyValuePair<int, int> GetStartCharPos()
         {
-            int a = 0;
-            int b = 0;
             for (int i = 0; i < _board.GetLength(0); i++)
             {
                 for (int j = 0; j < _board.GetLength(1); j++)
                 {
                     if (_board[i, j] == '&')
                     {
-                        a = i;
-                        b = j;
+                        return new KeyValuePair<int, int>(i, j);
                     }
                 }
             }
-            return new KeyValuePair<int, int>(a, b);
+
+            return new KeyValuePair<int, int>(-1, -1);
         }
 
         /// <summary>
@@ -179,29 +117,24 @@
         /// </summary>
         private KeyValuePair<int, int> GetEndCharPos()
         {
-            int a = 0;
-            int b = 0;
             for (int i = 0; i < _board.GetLength(0); i++)
             {
                 for (int j = 0; j < _board.GetLength(1); j++)
                 {
                     if (_board[i, j] == '$')
                     {
-                        a = i;
-                        b = j;
+                        return new KeyValuePair<int, int>(i, j);
                     }
                 }
             }
-            return new KeyValuePair<int, int>(a, b);
+
+            return new KeyValuePair<int, int>(-1, -1);
         }
 
         #endregion
+
         #region MoveMethods
 
-        internal List<Char[,]> retList()
-        {
-            return _moveshistory;
-        }
         /// <summary>
         /// Get cost of Move Up
         /// </summary>
@@ -211,6 +144,7 @@
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             return _board[currentpos.Key - 1, currentpos.Value] - '0';
         }
+
         /// <summary>
         /// get cost of Move Down 
         /// </summary>
@@ -220,6 +154,7 @@
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             return _board[currentpos.Key + 1, currentpos.Value] - '0';
         }
+
         /// <summary>
         /// Get cost of Move Right 
         /// </summary>
@@ -229,6 +164,7 @@
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             return _board[currentpos.Key, currentpos.Value + 1] - '0';
         }
+
         /// <summary>
         /// Get cost of Move Left 
         /// </summary>
@@ -238,111 +174,48 @@
             KeyValuePair<int, int> currentpos = GetStartCharPos();
             return _board[currentpos.Key, currentpos.Value - 1] - '0';
         }
-        /// <summary>
-        /// Moves start Character UP
-        /// </summary>
-        internal void MoveUp()
+
+        internal void FindPaths(int x, int y, int goalX, int goalY, string path, int depth, int cost)
         {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            if (_board[currentpos.Key - 1, currentpos.Value] == '$')
-            {
-
-                return;
-            }
-            if (!BorderCheck(_board[currentpos.Key - 1, currentpos.Value]))
-            {
-                if (!VisitedCheck(currentpos.Key - 1, currentpos.Value))
-                {
-                    Cost += _board[currentpos.Key - 1, currentpos.Value] - '0';
-                    AddVisitedPlace(currentpos.Key - 1, currentpos.Value);
-
-                }
-                _board[currentpos.Key, currentpos.Value] = (char)9632;
-                _board[currentpos.Key - 1, currentpos.Value] = '&';
-                Moves++;
-                BoardMethods.Show(_board);
-            }
-        }
-
-        /// <summary>
-        /// Moves start Character DOWN
-        /// </summary>
-        internal void MoveDown()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-
-            if (_board[currentpos.Key + 1, currentpos.Value] == '$')
+            if (depth == DepthLimit)
             {
                 return;
             }
-            if (!BorderCheck(_board[currentpos.Key + 1, currentpos.Value]))
-            {
-                if (!VisitedCheck(currentpos.Key + 1, currentpos.Value))
-                {
-                    Cost += _board[currentpos.Key + 1, currentpos.Value] - '0';
-                    AddVisitedPlace(currentpos.Key + 1, currentpos.Value);
-                }
-                _board[currentpos.Key + 1, currentpos.Value] = '&';
-                _board[currentpos.Key, currentpos.Value] = (char)9632;
-                Moves++;
-                BoardMethods.Show(_board);
-            }
-        }
 
-        /// <summary>
-        /// Moves start Character LEFT
-        /// </summary>
-        internal void MoveLeft()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            if (_board[currentpos.Key, currentpos.Value - 1] == '$')
+            // Sprawdź, czy jesteśmy na pozycji meta
+            if (x == goalX && y == goalY)
             {
+                TotalCombinations++;
+                Console.Title = $"number of combinations: {TotalCombinations}";
+                _visited.Add(new PathCost(path, cost));
                 return;
             }
-            if (!BorderCheck(_board[currentpos.Key, currentpos.Value - 1]))
+
+
+            // Przesuń się w górę
+            if (x > 0 && _board[x - 1, y] != '+')
             {
-
-                if (!VisitedCheck(currentpos.Key, currentpos.Value - 1))
-                {
-                    Cost += _board[currentpos.Key, currentpos.Value - 1] - '0';
-                    AddVisitedPlace(currentpos.Key, currentpos.Value + 1);
-                }
-
-                _board[currentpos.Key, currentpos.Value] = (char)9632;
-                _board[currentpos.Key, currentpos.Value - 1] = '&';
-                Moves++;
-
-                BoardMethods.Show(_board);
+                FindPaths(x - 1, y, goalX, goalY, path + "U", depth + 1, cost + _board[x - 1, y] - '0');
             }
+
+            // Przesuń się w dół
+            if (x < _board.GetLength(0) - 1 && _board[x + 1, y] != '+')
+            {
+                FindPaths(x + 1, y, goalX, goalY, path + "D", depth + 1, cost + _board[x + 1, y] - '0');
+            }
+
+            // Przesuń się w lewo
+            if (y > 0 && _board[x, y - 1] != '+')
+            {
+                FindPaths(x, y - 1, goalX, goalY, path + "L", depth + 1, cost + _board[x, y - 1] - '0');
+            }
+
+            if (y < _board.GetLength(1) - 1 && _board[x, y + 1] != '+')
+            {
+                FindPaths(x, y + 1, goalX, goalY, path + "R", depth + 1, cost + _board[x, y + 1] - '0');
+            }
+
+            #endregion
         }
-
-        /// <summary>
-        /// Moves start Character RIGHT
-        /// </summary>
-        internal void MoveRight()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            if (_board[currentpos.Key, currentpos.Value + 1] == '$')
-            {
-                return;
-            }
-            AddVisitedPlace(currentpos.Key + 1, currentpos.Value);
-            if (!BorderCheck(_board[currentpos.Key, currentpos.Value + 1]))
-            {
-                if (!VisitedCheck(currentpos.Key, currentpos.Value + 1))
-                {
-                    Cost += _board[currentpos.Key, currentpos.Value + 1] - '0';
-                    AddVisitedPlace(currentpos.Key, currentpos.Value + 1);
-
-                }
-                _board[currentpos.Key, currentpos.Value] = (char)9632;
-                _board[currentpos.Key, currentpos.Value + 1] = '&';
-                Moves++;
-
-                BoardMethods.Show(_board);
-            }
-        }
-
-        #endregion
     }
 }
