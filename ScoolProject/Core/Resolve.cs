@@ -72,7 +72,7 @@
             KeyValuePair<int, int> start = GetStartCharPos(_board);
             KeyValuePair<int, int> end = GetEndCharPos();
             FindPaths(start.Key, start.Value, end.Key, end.Value, "", 0, 0);
-            var x = _visited.MinBy(pc => pc.Cost);
+           
         }
 
         /// <summary>
