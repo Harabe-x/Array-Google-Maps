@@ -6,16 +6,26 @@
         /// Writes string char by char with specified delay 
         /// 
         /// </summary>
-        /// <param name="Text"></param>
-        /// <param name="dealy"></param>
-        internal static void WriteAnimation(String Text, TimeSpan dealy)
+        /// <param name="text"></param>
+        /// <param name="delay"></param>
+        internal static void WriteAnimation(String text, TimeSpan delay)
         {
-            for (int i = 0; i < Text.Length; i++)
+            for (int i = 0; i < text.Length; i++)
             {
-                Console.Write(Text[i]);
-                Thread.Sleep(dealy.Milliseconds);
+                Console.Write(text[i]);
+                Thread.Sleep(delay.Milliseconds);
             }
             Console.WriteLine();
+        }
+
+        /// <summary>
+        /// Makes board displaying smooth
+        /// </summary>
+        /// <param name="delay"></param>
+        internal static void ClearAndWait(TimeSpan delay)
+        {
+            Console.ReadKey();
+            Console.SetCursorPosition(0, 0);
         }
     }
 }

@@ -7,9 +7,9 @@
         /// </summary>
         /// <param name="size"></param>
         /// <returns></returns>
-        internal static Char[,]? Generate(int size)
+        internal static string[,] Generate(int size)
         {
-            char[,] board = new Char[size, size];
+            var board = new string[size, size];
             return board;
 
         }
@@ -18,32 +18,32 @@
         /// </summary>
         /// <param name="board"></param>
         /// <returns></returns>
-        internal static Char[,] FillBoard(Char[,] board)
+        internal static string[,] FillBoard(string[,] board)
         {
             // & = Start Char
             // $ = End Char
 
-            Random _random = new Random();
+            Random random = new Random();
 
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (i == 0 || i == board.GetLength(0) - 1 || j == 0 || j == board.GetLength(1) - 1) { board[i, j] = '+'; }
-                    else { board[i, j] = (Char)(0x30 | _random.Next(0, 10)); }
+                    if (i == 0 || i == board.GetLength(0) - 1 || j == 0 || j == board.GetLength(1) - 1) { board[i, j] = "+"; }
+                    else { board[i, j] = random.Next(0, 10).ToString(); }
 
                 }
             }
             while (true)
             {
-                int a = _random.Next(board.GetLength(0) - 1);
-                int b = _random.Next(board.GetLength(0) - 1);
-                int x = _random.Next(board.GetLength(0) - 1);
-                int y = _random.Next(board.GetLength(0) - 1);
+                int a = random.Next(board.GetLength(0) - 1);
+                int b = random.Next(board.GetLength(0) - 1);
+                int x = random.Next(board.GetLength(0) - 1);
+                int y = random.Next(board.GetLength(0) - 1);
                 if (!Resolve.BorderCheck(board[x, y]) && !Resolve.BorderCheck(board[a, b]) && a != x)
                 {
-                    board[a, b] = '&';
-                    board[x, y] = '$';
+                    board[a, b] = "&";
+                    board[x, y] = "$";
                     break;
                 }
             }
@@ -54,15 +54,15 @@
         /// Prints board to console.
         /// </summary>
         /// <param name="board"></param>
-        internal static void Show(Char[,] board)
+        internal static void Show(string[,] board)
         {
             for (int i = 0; i < board.GetLength(0); i++)
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    if (board[i, j] == '&') Console.ForegroundColor = ConsoleColor.Red;
-                    if (board[i, j] == '$') Console.ForegroundColor = ConsoleColor.Green;
-                    if (board[i, j] == (char)9632) Console.ForegroundColor = ConsoleColor.Cyan;
+                    if (board[i, j] == "&") Console.ForegroundColor = ConsoleColor.Red;
+                    if (board[i, j] == "$") Console.ForegroundColor = ConsoleColor.Green;
+                    if (board[i, j] == "■") Console.ForegroundColor = ConsoleColor.Cyan;
 
                     Console.Write($"{board[i, j]} ");
                     Console.ResetColor();

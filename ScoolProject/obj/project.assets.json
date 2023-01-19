@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
+      "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
       "projectName": "Array-Google-Maps",
-      "projectPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
+      "projectPath": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
       "packagesPath": "C:\\Users\\xgra5\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\xgra5\\RiderProjects\\SchoolProject\\Array-Google-Maps\\ScoolProject\\obj\\",
+      "outputPath": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

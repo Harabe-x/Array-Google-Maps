@@ -5,12 +5,16 @@
         #region Fields
 
 
-        internal int TotalCombinations { get; set; }
+        /// <summary>
+        /// Number of total checked combinations
+        /// </summary>
+        private int TotalCombinations { get; set; }
 
         /// <summary>
         /// Recursion DepthLimit
+        ///
         /// </summary>
-        internal int DepthLimit = 12;
+        private const int DepthLimit = 15;
 
         /// <summary>
         ///  Total cost
@@ -20,7 +24,7 @@
         /// <summary>
         /// Array of chars which contains board to solve
         /// </summary>
-        internal readonly Char[,] _board;
+        private readonly string[,] _board;
 
         /// <summary>
         /// List that stores visited places 
@@ -29,13 +33,13 @@
 
         #endregion
 
-        #region ctor
+        #region Ctor
 
         /// <summary>
         /// CTOR LOL 
         /// </summary>
         /// <param name="board"></param>
-        internal Resolve(char[,] board)
+        internal Resolve(string[,] board)
         {
             _board = board;
             _visited = new List<PathCost>();
@@ -48,11 +52,11 @@
         /// <summary>
         /// Check if the specified position is board border 
         /// </summary>
-        /// <param name="drawnindex"></param>
+        /// <param name="drawnIndex"></param>
         /// <returns></returns>
-        internal static bool BorderCheck(Char drawnindex)
+        internal static bool BorderCheck(string drawnIndex)
         {
-            if (drawnindex == '+')
+            if (drawnIndex == "+")
             {
                 return true;
             }
@@ -63,45 +67,37 @@
         /// <summary>
         /// Resolves the board  
         /// </summary>
-        internal void Start()
+        private void Start()
         {
-            KeyValuePair<int, int> start = GetStartCharPos();
+            KeyValuePair<int, int> start = GetStartCharPos(_board);
             KeyValuePair<int, int> end = GetEndCharPos();
             FindPaths(start.Key, start.Value, end.Key, end.Value, "", 0, 0);
-            var minCostPath = _visited.OrderBy(pc => pc.Cost).FirstOrDefault();
-
-            // foreach (var vis in _visited)
-            // { //Console.WriteLine(vis);
-            //     Console.WriteLine($"RUCHY:{vis.Key} ŁĄCZNY KOSZT:{vis.Value}");
-            //     if (min > vis.Value )
-            //     {
-            //         min = vis.Value;
-            //         asociatedstring = vis.Key;
-            //     }
-            // }
-
-
-
-            Console.WriteLine($"MIN:{minCostPath.Cost} \nMOVES:{minCostPath.Path}");
-            BoardMethods.Show(_board);
-
+            var x = _visited.MinBy(pc => pc.Cost);
         }
 
+        /// <summary>
+        /// Returns Board
+        /// </summary>
+        /// <returns></returns>
+        internal KeyValuePair<PathCost?, string[,]> ReturnPair()
+        {
+            Start();
+            return new KeyValuePair<PathCost?, string[,]>(_visited.MinBy(pc => pc.Cost), _board);
+        }
         #endregion
-
         #region GetPosMethods
 
         /// <summary>
         /// Finds the Start Char 
         /// Start Char = &
         /// </summary>
-        private KeyValuePair<int, int> GetStartCharPos()
+        internal static KeyValuePair<int, int> GetStartCharPos(string[,] board)
         {
-            for (int i = 0; i < _board.GetLength(0); i++)
+            for (var i = 0; i < board.GetLength(0); i++)
             {
-                for (int j = 0; j < _board.GetLength(1); j++)
+                for (var j = 0; j < board.GetLength(1); j++)
                 {
-                    if (_board[i, j] == '&')
+                    if (board[i, j] == "&")
                     {
                         return new KeyValuePair<int, int>(i, j);
                     }
@@ -121,7 +117,7 @@
             {
                 for (int j = 0; j < _board.GetLength(1); j++)
                 {
-                    if (_board[i, j] == '$')
+                    if (_board[i, j] == "$")
                     {
                         return new KeyValuePair<int, int>(i, j);
                     }
@@ -133,89 +129,66 @@
 
         #endregion
 
-        #region MoveMethods
+        #region Resolve
 
         /// <summary>
-        /// Get cost of Move Up
+        /// Finds all ways from point a to b 
         /// </summary>
-        /// <returns></returns>
-        internal int GetCostOfMoveUp()
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="goalX"></param>
+        /// <param name="goalY"></param>
+        /// <param name="path"></param>
+        /// <param name="depth"></param>
+        /// <param name="cost"></param>
+        private void FindPaths(int x, int y, int goalX, int goalY, string path, int depth, int cost)
         {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            return _board[currentpos.Key - 1, currentpos.Value] - '0';
-        }
 
-        /// <summary>
-        /// get cost of Move Down 
-        /// </summary>
-        /// <returns></returns>
-        internal int GetCostOfMoveDown()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            return _board[currentpos.Key + 1, currentpos.Value] - '0';
-        }
-
-        /// <summary>
-        /// Get cost of Move Right 
-        /// </summary>
-        /// <returns></returns>
-        internal int GetCostOfMoveRight()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            return _board[currentpos.Key, currentpos.Value + 1] - '0';
-        }
-
-        /// <summary>
-        /// Get cost of Move Left 
-        /// </summary>
-        /// <returns></returns>
-        internal int GetCostOfMoveLeft()
-        {
-            KeyValuePair<int, int> currentpos = GetStartCharPos();
-            return _board[currentpos.Key, currentpos.Value - 1] - '0';
-        }
-
-        internal void FindPaths(int x, int y, int goalX, int goalY, string path, int depth, int cost)
-        {
             if (depth == DepthLimit)
             {
                 return;
             }
 
-            // Sprawdź, czy jesteśmy na pozycji meta
+
             if (x == goalX && y == goalY)
             {
                 TotalCombinations++;
-                Console.Title = $"number of combinations: {TotalCombinations}";
+                Console.Title = $" Number of combinations: {TotalCombinations}";
                 _visited.Add(new PathCost(path, cost));
                 return;
             }
 
 
-            // Przesuń się w górę
-            if (x > 0 && _board[x - 1, y] != '+')
+            // Move UP
+            if (x > 0 && _board[x - 1, y] != "+")
             {
-                FindPaths(x - 1, y, goalX, goalY, path + "U", depth + 1, cost + _board[x - 1, y] - '0');
+                int.TryParse(_board[x + 1, y], out var parsed);
+                FindPaths(x - 1, y, goalX, goalY, path + "U", depth + 1, cost + parsed);
             }
 
-            // Przesuń się w dół
-            if (x < _board.GetLength(0) - 1 && _board[x + 1, y] != '+')
+            // Move DOWN
+            if (x < _board.GetLength(0) - 1 && _board[x + 1, y] != "+")
             {
-                FindPaths(x + 1, y, goalX, goalY, path + "D", depth + 1, cost + _board[x + 1, y] - '0');
+                int.TryParse(_board[x + 1, y], out var parsed);
+                FindPaths(x + 1, y, goalX, goalY, path + "D", depth + 1, cost + parsed);
             }
 
-            // Przesuń się w lewo
-            if (y > 0 && _board[x, y - 1] != '+')
+            // MOVE LEFT 
+            if (y > 0 && _board[x, y - 1] != "+")
             {
-                FindPaths(x, y - 1, goalX, goalY, path + "L", depth + 1, cost + _board[x, y - 1] - '0');
+                int.TryParse(_board[x, y - 1], out var parsed);
+                FindPaths(x, y - 1, goalX, goalY, path + "L", depth + 1, cost + parsed);
             }
 
-            if (y < _board.GetLength(1) - 1 && _board[x, y + 1] != '+')
+            //MOVE RIGHT
+            if (y < _board.GetLength(1) - 1 && _board[x, y + 1] != "+")
             {
-                FindPaths(x, y + 1, goalX, goalY, path + "R", depth + 1, cost + _board[x, y + 1] - '0');
+                int.TryParse(_board[x, y + 1], out var parsed);
+                FindPaths(x, y + 1, goalX, goalY, path + "R", depth + 1, cost + parsed);
             }
-
-            #endregion
         }
+
+        #endregion
+
     }
 }

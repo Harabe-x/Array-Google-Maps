@@ -13,3 +13,33 @@ C:\Users\xgra5\RiderProjects\SchoolProject\Array-Google-Maps\ScoolProject\obj\De
 C:\Users\xgra5\RiderProjects\SchoolProject\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.pdb
 C:\Users\xgra5\RiderProjects\SchoolProject\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.genruntimeconfig.cache
 C:\Users\xgra5\RiderProjects\SchoolProject\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\ref\Array-Google-Maps.dll
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.exe
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.deps.json
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.runtimeconfig.json
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.dll
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.pdb
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.csproj.AssemblyReference.cache
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.AssemblyInfoInputs.cache
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.AssemblyInfo.cs
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.csproj.CoreCompileInputs.cache
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.dll
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\refint\Array-Google-Maps.dll
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.pdb
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.genruntimeconfig.cache
+C:\Users\xgra5\Desktop\Nowy folder (2)\Array-Google-Maps-main\ScoolProject\obj\Debug\net6.0\ref\Array-Google-Maps.dll
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.exe
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.deps.json
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.runtimeconfig.json
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.dll
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\bin\Debug\net6.0\Array-Google-Maps.pdb
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.csproj.AssemblyReference.cache
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.AssemblyInfoInputs.cache
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.AssemblyInfo.cs
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.csproj.CoreCompileInputs.cache
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.dll
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\refint\Array-Google-Maps.dll
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.pdb
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\Array-Google-Maps.genruntimeconfig.cache
+C:\Users\xgra5\RiderProjects\GitHub\Array-Google-Maps\ScoolProject\obj\Debug\net6.0\ref\Array-Google-Maps.dll
