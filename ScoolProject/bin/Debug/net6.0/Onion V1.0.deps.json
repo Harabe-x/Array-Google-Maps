@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "SchoolProject/1.0.0": {
+      "Onion V1.0/1.0.0": {
         "runtime": {
-          "SchoolProject.dll": {}
+          "Onion V1.0.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "SchoolProject/1.0.0": {
+    "Onion V1.0/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

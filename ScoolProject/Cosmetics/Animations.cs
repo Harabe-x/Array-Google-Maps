@@ -22,10 +22,16 @@
         /// Makes board displaying smooth
         /// </summary>
         /// <param name="delay"></param>
-        internal static void ClearAndWait(TimeSpan delay)
+        internal static void ClearAndWait()
         {
             Console.ReadKey();
             Console.SetCursorPosition(0, 0);
+        }
+
+        internal static void PressKeyToContinue()
+        {
+            Console.WriteLine("Press any key to continue ...");
+            Console.ReadKey(true);
         }
     }
 }

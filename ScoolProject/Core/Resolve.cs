@@ -1,9 +1,15 @@
-﻿namespace SchoolProject.Core
+﻿using System.Diagnostics;
+
+namespace SchoolProject.Core
 {
     internal class Resolve
     {
         #region Fields
 
+        /// <summary>
+        /// StopWatch 
+        /// </summary>
+        Stopwatch _stopwatch = new Stopwatch();
 
         /// <summary>
         /// Number of total checked combinations
@@ -43,6 +49,7 @@
         {
             _board = board;
             _visited = new List<PathCost>();
+            _stopwatch.Start();
         }
 
         #endregion
@@ -72,7 +79,6 @@
             KeyValuePair<int, int> start = GetStartCharPos(_board);
             KeyValuePair<int, int> end = GetEndCharPos();
             FindPaths(start.Key, start.Value, end.Key, end.Value, "", 0, 0);
-            var x = _visited.MinBy(pc => pc.Cost);
         }
 
         /// <summary>
@@ -153,7 +159,7 @@
             if (x == goalX && y == goalY)
             {
                 TotalCombinations++;
-                Console.Title = $" Number of combinations: {TotalCombinations}";
+                Console.Title = $" Elapsed Time: {(int)_stopwatch.ElapsedMilliseconds / 1000}s                                                                                             Total combinations: {TotalCombinations} \n ";
                 _visited.Add(new PathCost(path, cost));
                 return;
             }

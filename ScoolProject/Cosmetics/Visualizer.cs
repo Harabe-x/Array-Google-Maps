@@ -78,19 +78,19 @@ internal class Visualizer
             {
                 case 'U':
                     Move(Direction.Up);
-                    Animations.ClearAndWait(TimeSpan.FromMilliseconds(1000));
+                    Animations.ClearAndWait();
                     break;
                 case 'D':
                     Move(Direction.Down);
-                    Animations.ClearAndWait(TimeSpan.FromMilliseconds(1000));
+                    Animations.ClearAndWait();
                     break;
                 case 'L':
                     Move(Direction.Left);
-                    Animations.ClearAndWait(TimeSpan.FromMilliseconds(1000));
+                    Animations.ClearAndWait();
                     break;
                 case 'R':
                     Move(Direction.Right);
-                    Animations.ClearAndWait(TimeSpan.FromMilliseconds(1000));
+                    Animations.ClearAndWait();
                     break;
             }
         }
