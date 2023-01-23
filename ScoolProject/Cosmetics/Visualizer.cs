@@ -3,6 +3,7 @@ namespace SchoolProject.Cosmetics;
 
 internal class Visualizer
 {
+    #region Fields
 
     /// <summary>
     ///  board 
@@ -14,7 +15,8 @@ internal class Visualizer
     /// </summary>
 
     private readonly PathCost _pathCost;
-
+    #endregion
+    #region Enum
     /// <summary>
     /// Move Types
     /// </summary>
@@ -25,6 +27,8 @@ internal class Visualizer
         Left,
         Right,
     }
+    #endregion
+    #region Ctor
     /// <summary>
     /// ctor
     /// </summary>
@@ -34,7 +38,8 @@ internal class Visualizer
         _board = keyValuePair.Value;
         _pathCost = keyValuePair.Key;
     }
-
+    #endregion
+    #region Methods
     /// <summary>
     /// Visually goes from point a to b 
     /// </summary>
@@ -78,19 +83,15 @@ internal class Visualizer
             {
                 case 'U':
                     Move(Direction.Up);
-                    Animations.ClearAndWait();
                     break;
                 case 'D':
                     Move(Direction.Down);
-                    Animations.ClearAndWait();
                     break;
                 case 'L':
                     Move(Direction.Left);
-                    Animations.ClearAndWait();
                     break;
                 case 'R':
                     Move(Direction.Right);
-                    Animations.ClearAndWait();
                     break;
             }
         }
@@ -98,7 +99,5 @@ internal class Visualizer
         Console.WriteLine(_pathCost);
 
     }
-
-
-
+    #endregion
 }

@@ -8,14 +8,14 @@
       "version": "1.0.0",
       "restore": {
         "projectUniqueName": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
-        "projectName": "Onion v1.0",
+        "projectName": "Onion V1.0",
         "projectPath": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\Array-Google-Maps.csproj",
         "packagesPath": "C:\\Users\\xgra5\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\xgra5\\RiderProjects\\GitHub\\Array-Google-Maps\\ScoolProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet"
         ],
         "configFilePaths": [
           "C:\\Users\\xgra5\\AppData\\Roaming\\NuGet\\NuGet.Config",

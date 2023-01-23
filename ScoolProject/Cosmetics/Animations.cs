@@ -2,6 +2,8 @@
 {
     internal static class Animations
     {
+        #region Methods
+
         /// <summary>
         /// Writes string char by char with specified delay 
         /// 
@@ -13,25 +15,21 @@
             for (int i = 0; i < text.Length; i++)
             {
                 Console.Write(text[i]);
+                if (text[i] == ' ')
+                    continue;
                 Thread.Sleep(delay.Milliseconds);
             }
             Console.WriteLine();
         }
-
+        
         /// <summary>
-        /// Makes board displaying smooth
+        /// Writes "Press any key to continue ..." 
         /// </summary>
-        /// <param name="delay"></param>
-        internal static void ClearAndWait()
-        {
-            Console.ReadKey();
-            Console.SetCursorPosition(0, 0);
-        }
-
         internal static void PressKeyToContinue()
         {
             Console.WriteLine("Press any key to continue ...");
             Console.ReadKey(true);
         }
+        #endregion
     }
 }

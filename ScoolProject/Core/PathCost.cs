@@ -1,5 +1,6 @@
 ﻿internal class PathCost
 {
+    #region Fields
     /// <summary>
     /// path to the goal
     /// </summary>
@@ -12,11 +13,15 @@
     /// </summary>
     /// <param name="path"></param>
     /// <param name="cost"></param>
+    #endregion
+    #region Ctor
     public PathCost(string path, int cost)
     {
         Path = path;
         Cost = cost;
     }
+    #endregion
+    #region Methods
     /// <summary>
     /// </summary>
     /// <returns></returns>
@@ -24,4 +29,5 @@
     {
         return $"Moves:{Path}\nCost:{Cost}";
     }
+    #endregion
 }

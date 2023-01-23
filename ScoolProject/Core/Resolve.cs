@@ -21,12 +21,7 @@ namespace SchoolProject.Core
         ///
         /// </summary>
         private const int DepthLimit = 15;
-
-        /// <summary>
-        ///  Total cost
-        /// </summary>
-        internal int Cost { get; set; }
-
+        
         /// <summary>
         /// Array of chars which contains board to solve
         /// </summary>
@@ -38,7 +33,6 @@ namespace SchoolProject.Core
         private readonly List<PathCost> _visited;
 
         #endregion
-
         #region Ctor
 
         /// <summary>
@@ -53,10 +47,9 @@ namespace SchoolProject.Core
         }
 
         #endregion
-
         #region Methods
-
-        /// <summary>
+        
+        /// <summary>a
         /// Check if the specified position is board border 
         /// </summary>
         /// <param name="drawnIndex"></param>
@@ -79,7 +72,6 @@ namespace SchoolProject.Core
             KeyValuePair<int, int> start = GetStartCharPos(_board);
             KeyValuePair<int, int> end = GetEndCharPos();
             FindPaths(start.Key, start.Value, end.Key, end.Value, "", 0, 0);
-            var x = _visited.MinBy(pc => pc.Cost);
         }
 
         /// <summary>
@@ -135,7 +127,6 @@ namespace SchoolProject.Core
         }
 
         #endregion
-
         #region Resolve
 
         /// <summary>

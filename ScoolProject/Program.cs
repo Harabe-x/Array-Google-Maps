@@ -8,10 +8,13 @@ internal class Program
     {
         RunMainMenu();
     }
-
+    
+    
+    /// <summary>
+    /// Runs Main menu 
+    /// </summary> 
     private static void RunMainMenu()
     {
-        Console.CursorVisible = false;
         Console.Title = "Onion V1.0 ";
         string[] options = { "Start", "How to use?", "Credits", "Exit" }
             ;

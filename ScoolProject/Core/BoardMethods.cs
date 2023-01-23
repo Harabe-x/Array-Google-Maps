@@ -2,6 +2,7 @@
 {
     internal static class BoardMethods
     {
+        #region Methods
         /// <summary>
         /// Generate empty array of chars in specified size
         /// </summary>
@@ -69,7 +70,9 @@
                 }
                 Console.WriteLine();
             }
+            Console.ReadKey(true);
+            Console.SetCursorPosition(0,0);
         }
-
+        #endregion
     }
 }
